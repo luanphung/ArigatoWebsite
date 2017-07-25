@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" >
+    <title> Arigatō | Restaurants </title>
+    <link rel="stylesheet" href="./css/restaurant.css">
+  </head>
+
+  <header>
+    <div class="logo"> <img src="./images/logo_red.png" alt="logo red" height="50px" width="50px"> </div>
+
+    <nav>
+      <a href="">About Us</a>
+      <a href="">Where to Stay</a>
+      <a href="">Places to Visit</a>
+      <a href="./Restaurants.html">Restaurants</a>
+      <a href="./home.html">Home</a>
+    </nav>
+	</header>
+	<body>
+    <h1> <span> Restaurants </span> </h1>
+	<br>
+	
+	
+	<div id="wrapper">
+    <div id="map">
+        Left
+    </div>
+    <div id="rightcolumn" style ="overflow-y: scroll">
+        <table width = 100%; align="center">
+			<tr>
+				<td id="Letter">
+					
+				</td>
+				<td align='center'>
+					<w>Restaurants</w>
+				</td>
+				<td align='center'>
+					<w>Description</w>
+				</td>
+			</tr>
+			
+			<tr>
+				<td id="Letter">
+					<w>A</w>
+				</td>
+				<td align='center'>
+					 <w>Butayaro</w>
+				</td>
+				<td align='center'>
+					<a href="https://www.reddit.com/r/food/comments/6f37k3/i_ate_butadon/">Amazing Pork</a>
+				</td>
+			</tr>
+						
+			<tr>
+				<td id="Letter">
+					<w>B</w>
+				</td>
+				<td align='center'>
+					 <w>Uncle Rikuro</w>
+				</td>
+				<td align='center'>
+					<a href="https://www.youtube.com/watch?v=qYGnhHA1V1I">Cheesecake!</a>
+				</td>
+			</tr>
+			
+			<tr>
+				<td id="Letter">
+					<w>C</w>
+				</td>
+				<td align='center'>
+					 <w>Ichiran Ramen</w>
+				</td>
+				<td align='center'>
+					<a href="">Insert Description</a>
+				</td>
+			
+			</tr>
+						<tr>
+				<td id="Letter">
+					<w>D</w>
+				</td>
+				<td align='center'>
+					 <w>Insert Restaurants</w>
+				</td>
+				<td align='center'>
+					<a href="">Insert Description</a>
+				</td>
+			</tr>
+			
+		</table>
+    </div>
+</div>
+
+
+
+
+
+
+  </body>
+  
+  <!-- Google maps -->
+    <script>
+      function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: {lat: 35.32, lng: 139.68} 
+        });
+		
+        directionsDisplay.setMap(map);
+
+		var butayaro = new google.maps.Marker({
+          position: {lat :35.699519, lng: 139.764445},
+		  animation: google.maps.Animation.DROP,
+          map: map,
+          label: "A"
+        });
+
+		var uncleRikuro = new google.maps.Marker({
+          position: {lat: 34.666119, lng:135.501499},
+		  animation: google.maps.Animation.DROP,
+          map: map,
+          label: "B"
+        });
+		
+		var ichiran = new google.maps.Marker({
+          position: {lat:35.661118, lng:139.701054},
+		  animation: google.maps.Animation.DROP,
+          map: map,
+          label: "C"
+        });
+		
+		var kura = new google.maps.Marker({
+          position: {lat:35.624589, lng:139.739442},
+		  animation: google.maps.Animation.DROP,
+          map: map,
+          label: "C"
+        });
+		
+		butayaro.setMap(map);
+		uncleRikuro.setMap(map);
+		ichiran.setMap(map);
+		kura.setMap(map);
+		
+        document.getElementById('submit').addEventListener('click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var waypts = [];
+
+        directionsService.route({
+          origin: document.getElementById('start').value,
+          destination: document.getElementById('end').value,
+
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+            var route = response.routes[0];
+            var summaryPanel = document.getElementById('directions-panel');
+            summaryPanel.innerHTML = '';
+            // For each route, display summary information.
+            for (var i = 0; i < route.legs.length; i++) {
+              var routeSegment = i + 1;
+              summaryPanel.innerHTML += '<b>Route Segment' +
+                  '</b><br>';
+              summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+              summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+              summaryPanel.innerHTML += route.legs[i].distance.text + '<br>';
+              summaryPanel.innerHTML += route.legs[i].duration.text + '<br><br>';
+            }
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+
+
+      
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2AjldRKq1iv_sl951s7uMdFmlDXtbSWI&callback=initMap">
+    </script>
+	
+	
+<html>

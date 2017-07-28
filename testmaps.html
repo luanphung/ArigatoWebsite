@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" >
+    <title> Arigatō | Where to Stay </title>
+    <link rel="stylesheet" href="./css/wheretostay.css">
+  </head>
+
+  <header>
+    <div class="logo"> <img src="./images/logo_red.png" alt="logo red" height="50px" width="50px"> </div>
+
+    <nav>
+      <a href="AboutUs.html">About Us</a>
+      <a href="WheretoStay.html">Where to Stay</a>
+      <a href="PlacestoVisit.html">Places to Visit</a>
+      <a href="Restaurants.html">Restaurants</a>
+      <a href="home.html">Home</a>
+    </nav>
+
+	</header>
+
+	<body>
+
+      <h1> <span> Where to Stay </span> </h1>
+
+  	<div id="map"></div>
+
+      <style>
+        #map{
+          height: 450px;
+          width: 100%;
+        }
+      </style>
+
+  	<script>
+        function initMap(){
+
+          var mapOptions = {
+            zoom:12,
+            center: new google.maps.LatLng(35.71, 139.73)
+          };
+
+          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+          // Exemple de marker //
+
+          var markerOptions = {
+            position: new google.maps.LatLng(35.71, 139.73)
+          };
+          var marker = new google.maps.Marker(markerOptions);
+          marker.setMap(map);
+
+          // Exemple de info window //
+
+          var infoWindowOptions = {
+            content: 'blalblabla'
+          };
+          var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+          google.maps.event.addListener(marker, 'click', function(e){
+            infoWindow.open(map, marker);
+          });
+
+          // Butayaro //
+
+          var butayaroOptions = {
+            position: new google.maps.LatLng(35.699519, 139.764445),
+            animation: google.maps.Animation.DROP,
+            map: map
+          };
+          var butayaro = new google.maps.Marker(butayaroOptions);
+          butayaro.setMap(map);
+
+          var butayaroInfoWindowOptions = {
+            content: 'Butayaro'
+          };
+          var butayoroInfoWindow = new google.maps.InfoWindow(butayaroInfoWindowOptions);
+          google.maps.event.addListener(butayaro, 'click', function(){
+          butayoroInfoWindow.open(map, butayaro);
+          });
+
+          // Uncle Rikuro //
+
+          var uncleRikuroOptions = {
+            position: new google.maps.LatLng(34.666119, 135.501499),
+            animation: google.maps.Animation.DROP
+          };
+          var uncleRikuro = new google.maps.Marker(uncleRikuroOptions);
+          uncleRikuro.setMap(map);
+
+          var uncleRikuroInfoWindowOptions = {
+            content: 'Uncle Rikuro'
+          };
+          var uncleRikuroInfoWindow = new google.maps.InfoWindow(uncleRikuroInfoWindowOptions);
+          google.maps.event.addListener(uncleRikuro, 'click', function(){
+          uncleRikuroInfoWindow.open(map, uncleRikuro);
+          });
+
+          // Ichiran Ramen //
+
+          var ichiranOptions = {
+            position: new google.maps.LatLng(35.661118, 139.701054),
+            animation: google.maps.Animation.DROP
+          };
+          var ichiran = new google.maps.Marker(ichiranOptions);
+          ichiran.setMap(map);
+
+          var ichiranInfoWindowOptions = {
+            content: 'Ichiran Ramen'
+          };
+          var ichiranInfoWindow = new google.maps.InfoWindow(ichiranInfoWindowOptions);
+          google.maps.event.addListener(ichiran, 'click', function(){
+          ichiranInfoWindow.open(map, ichiran);
+          });
+
+          // Kura //
+
+          var kuraOptions = {
+            position: new google.maps.LatLng(35.624589, 139.739442),
+            animation: google.maps.Animation.DROP
+          };
+          var kura = new google.maps.Marker(kuraOptions);
+          kura.setMap(map);
+
+          var kuraInfoWindowOptions = {
+            content: 'Kura'
+          };
+          var kuraInfoWindow = new google.maps.InfoWindow(kuraInfoWindowOptions);
+          google.maps.event.addListener(kura, 'click', function(e){
+          kuraInfoWindow.open(map, kura);
+          });
+
+        }
+    </script>
+
+  	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADiGg9wKYHogz5YwTAubRQmgCVyhOSrRA&callback=initMap">
+    </script>
+
+</body>
+
+</html>
